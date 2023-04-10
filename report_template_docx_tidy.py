@@ -37,13 +37,12 @@ def tidy_document(document_content: IO[bytes]) -> str:
 
 
 if __name__ == '__main__':
-    docx_path = '../server/static/reportTemplate/template.docx'
-    if docx_path == "":
-        if len(sys.argv) == 2:
-            docx_path = sys.argv[1]
-        else:
-            print("请指定文件")
-            exit()
+    docx_path = ""
+    if len(sys.argv) == 2:
+        docx_path = sys.argv[1]
+    else:
+        print("请指定文件")
+        exit() 
     if not os.path.isfile(docx_path):
         print("文件不存在")
         exit()
