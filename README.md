@@ -1,6 +1,8 @@
 # SecReport
 ChatGPT加持的多人协同渗透测试报告`编写`/`导出`平台
 
+[演示网站](https://demo.sec-report.com)
+
 * 多人协同编辑
 * 自定义导出模版
 * ChatGPT生成漏洞简介及修复方案等信息
