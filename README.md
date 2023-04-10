@@ -1,5 +1,5 @@
 # SecReport
-ChatGPT加持的多人协同渗透测试报告`编写`/`导出`平台
+ChatGPT加持的，多人协同信息安全渗透测试报告`编写`/`导出`平台
 
 [演示网站](https://demo.sec-report.com)
 
