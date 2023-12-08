@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 
 createPassword(){
-    cd docker || exit
     if [ ! -f "mongodb_password.txt" ]; then
         echo -n $(uuidgen |sed 's/-//g') > mongodb_password.txt
     fi
@@ -14,7 +13,6 @@ createPassword(){
     if [ ! -f "editor_sync_password.txt" ]; then
         echo -n $(uuidgen |sed 's/-//g') > editor_sync_password.txt
     fi
-    cd ..
 }
 
 run(){
