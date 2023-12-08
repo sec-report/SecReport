@@ -15,7 +15,7 @@ ChatGPT加持的，多人协同信息安全渗透测试报告`编写`/`导出`�
 * ~~整合社区单机版至[Docker Hub](https://hub.docker.com/r/secreport/sec-report)~~
 * ~~提供报告模版demo~~
 
-> 报告模版demo已上传至template文件夹，欢迎社区通过pr提供优质模版。优质模版将在后续版本自动集成至官方模版库。
+> 报告模版demo已上传至template文件夹，欢迎社区通过pr提交优质报告模版。优质模版将在后续版本自动集成至官方模版库。
 
 ---
 
