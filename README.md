@@ -12,4 +12,4 @@ ChatGPT加持的，多人协同信息安全渗透测试报告`编写`/`导出`�
 #### TODO:
 * ~~复测报告生成~~
 * ~~多人协同的临时信息同步固钉窗口~~
-* 整合单机社区版至Docker Hub
+* 整合社区单机版至[Docker Hub](https://hub.docker.com/r/secreport/sec-report)
