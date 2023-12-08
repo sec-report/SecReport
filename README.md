@@ -23,6 +23,12 @@ git clone https://github.com/sec-report/SecReport
 cd SecReport
 chmod +x run.sh
 ./run.sh
+
+# 停止
+./run stop
+
+# 更新
+./run update
 ```
 
 Docker全部运行后访问: [http://127.0.0.1](http://127.0.0.1/)
