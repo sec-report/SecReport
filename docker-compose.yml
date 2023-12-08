@@ -1,0 +1,112 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: always
+    secrets:
+      - mongodb_password
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sec_report
+      MONGO_INITDB_ROOT_PASSWORD_FILE: /run/secrets/mongodb_password
+      MONGO_INITDB_DATABASE: sec_report
+    volumes:
+      - ./data/mongo/db:/data/db
+      - ./data/mongo/util:/data/configdb
+    networks:
+      - sec_report
+  redis:
+    image: redis:latest
+    container_name: redis
+    restart: always
+    secrets:
+      - redis_password
+    command: [
+      "bash", "-c", 'docker-entrypoint.sh --requirepass `cat /run/secrets/redis_password`'
+    ]
+    volumes:
+      - ./data/redis:/data
+    networks:
+      - sec_report
+  s3:
+    image: zenko/cloudserver:latest
+    container_name: s3
+    restart: always
+    secrets:
+      - s3_password
+    environment:
+      - REMOTE_MANAGEMENT_DISABLE=1
+      - SCALITY_ACCESS_KEY_ID=s3
+    volumes:
+      - ./data/s3/localData:/usr/src/app/localData
+      - ./data/s3/localMetadata:/usr/src/app/localMetadata
+    networks:
+      - sec_report
+    command: bash -c "SCALITY_SECRET_ACCESS_KEY=`cat /run/secrets/s3_password` yarn start"
+  editor-sync:
+    image: secreport/editor-sync:latest
+    container_name: editor_sync
+    restart: always
+    secrets:
+      - editor_sync_password
+      - redis_password
+      - mongodb_password
+    environment:
+      - PORT=8001
+      - EDITOR_SYNC_PASSWORD_FILE=/run/secrets/editor_sync_password
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - REDIS_PASSWORD_FILE=/run/secrets/redis_password
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
+      - MONGO_USER=sec_report
+      - MONGO_PASSWORD_FILE=/run/secrets/mongodb_password
+      - MONGO_DATABASE=sec_report
+    networks:
+      - sec_report
+  sec-report:
+    image: secreport/sec-report:latest
+    container_name: sec_report
+    restart: always
+    depends_on:
+      - mongodb
+      - redis
+      - s3
+      - editor-sync
+    secrets:
+      - mongodb_password
+      - redis_password
+      - s3_password
+      - editor_sync_password
+    environment:
+      - listen=0.0.0.0:80
+      - redis_uri=redis:6379
+      - redis_password_file=/run/secrets/redis_password
+      - mongodb_name=sec_report
+      - mongodb_uri=mongodb://sec_report:{password}@mongodb:27017/
+      - mongodb_password_file=/run/secrets/mongodb_password
+      - s3_uri=http://s3:8000
+      - s3_region=us-east-1
+      - s3_bucket=sec-report
+      - s3_access_key=s3
+      - s3_secret_key_file=/run/secrets/s3_password
+      - editor_sync_uri=ws://editor-sync:8001
+      - editor_sync_password_file=/run/secrets/editor_sync_password
+    networks:
+      - sec_report
+    ports:
+      - 80:80
+
+networks:
+  sec_report:
+    name: sec_report
+    driver: bridge
+
+secrets:
+  mongodb_password:
+    file: ./mongodb_password.txt
+  redis_password:
+    file: ./redis_password.txt
+  s3_password:
+    file: ./s3_password.txt
+  editor_sync_password:
+    file: ./editor_sync_password.txt
