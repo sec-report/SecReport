@@ -38,3 +38,9 @@ chmod +x run.sh
 ```
 
 Docker全部运行后访问 [http://127.0.0.1/](http://127.0.0.1/) 初始化管理员账号
+
+---
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=sec-report/SecReport&type=Date)](https://star-history.com/#sec-report/SecReport&Date)
