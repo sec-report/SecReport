@@ -42,7 +42,9 @@ chmod +x run.sh
 
 Docker全部运行后访问 [http://127.0.0.1/](http://127.0.0.1/) 初始化管理员账号
 
----
+## 其他作品
+
+[SecAutoBan](https://github.com/sec-report/SecAutoBan)：安全设备告警IP全自动封禁平台，支持百万IP秒级分析处理。
 
 ## Star History
 
