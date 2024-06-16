@@ -31,7 +31,6 @@ ChatGPT加持的，多人协同信息安全渗透测试报告`编写`/`导出`�
 
 ```shell
 mkdir SecReport && cd SecReport
-wget https://raw.githubusercontent.com/sec-report/SecReport/main/docker-compose.yml
 wget https://raw.githubusercontent.com/sec-report/SecReport/main/run.sh
 chmod +x run.sh
 ./run.sh
