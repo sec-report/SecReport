@@ -2,7 +2,7 @@
 
 downloadDockerCompose(){
      if [ ! -f "docker-compose.yml" ]; then
-         wget https://raw.githubusercontent.com/sec-report/SecAutoBan/main/docker-compose.yml
+         wget https://raw.githubusercontent.com/sec-report/SecReport/main/docker-compose.yml
      fi
 }
 
