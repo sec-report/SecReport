@@ -1,5 +1,11 @@
 #!/usr/bin/env zsh
 
+downloadDockerCompose(){
+     if [ ! -f "docker-compose.yml" ]; then
+         wget https://raw.githubusercontent.com/sec-report/SecAutoBan/main/docker-compose.yml
+     fi
+}
+
 createPassword(){
     if [ ! -f "mongodb_password.txt" ]; then
         echo -n $(uuidgen |sed 's/-//g') > mongodb_password.txt
@@ -16,6 +22,7 @@ createPassword(){
 }
 
 run(){
+    downloadDockerCompose
     createPassword
     docker compose up -d
 }
@@ -25,6 +32,10 @@ stop(){
 }
 
 update(){
+    if [ -f "docker-compose.yml" ]; then
+         rm docker-compose.yml
+         downloadDockerCompose
+    fi
     docker compose pull
 }
 
