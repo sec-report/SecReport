@@ -48,6 +48,8 @@ Docker全部运行后访问 [http://127.0.0.1/](http://127.0.0.1/) 初始化管�
 
 关注微信公众号: `信息安全报告`，点击公众号菜单栏`激活码`-`SecReport`，获取激活码。
 
+!()[ https://raw.githubusercontent.com/sec-report/SecReport/main/img/mp_wx.jpg]
+
 获取到激活码后，请在后台: `后台管理`-`证书管理`，进行绑定。
 
 ## 版本区别
