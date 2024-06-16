@@ -36,10 +36,10 @@ chmod +x run.sh
 ./run.sh
 
 # 停止
-./run stop
+./run.sh stop
 
 # 更新
-./run update
+./run.sh update
 ```
 
 Docker全部运行后访问 [http://127.0.0.1/](http://127.0.0.1/) 初始化管理员账号
