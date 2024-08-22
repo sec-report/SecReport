@@ -16,6 +16,7 @@ ChatGPT加持的，多人协同信息安全渗透测试报告`编写`/`导出`�
 * ~~整合社区单机版至[Docker Hub](https://hub.docker.com/r/secreport/sec-report)~~
 * ~~提供报告模版demo~~
 * ~~APP安全合规测试报告~~
+* ~~渗透测试报告漏洞列表中添加涉及系统字段~~
 * APP安全合规测试报告自定义模版
 * 应急溯源处置报告，包括`access.log`等日志分析功能
 
