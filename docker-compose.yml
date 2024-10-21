@@ -1,3 +1,5 @@
+name: sec_report
+
 services:
   mongodb:
     image: mongo:latest
@@ -28,20 +30,19 @@ services:
     networks:
       - sec_report
   s3:
-    image: zenko/cloudserver:latest
+    image: minio/minio
     container_name: s3
     restart: always
     secrets:
       - s3_password
     environment:
-      - REMOTE_MANAGEMENT_DISABLE=1
-      - SCALITY_ACCESS_KEY_ID=s3
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD_FILE=/run/secrets/s3_password
     volumes:
-      - ./data/s3/localData:/usr/src/app/localData
-      - ./data/s3/localMetadata:/usr/src/app/localMetadata
+      - ./data/s3:/data
     networks:
       - sec_report
-    command: bash -c "SCALITY_SECRET_ACCESS_KEY=`cat /run/secrets/s3_password` yarn start"
+    command: server /data --console-address ":9001"
   editor-sync:
     image: secreport/editor-sync:latest
     container_name: editor_sync
@@ -84,10 +85,10 @@ services:
       - mongodb_name=sec_report
       - mongodb_uri=mongodb://sec_report:{password}@mongodb:27017/
       - mongodb_password_file=/run/secrets/mongodb_password
-      - s3_uri=http://s3:8000
+      - s3_uri=s3:9000
       - s3_region=us-east-1
       - s3_bucket=sec-report
-      - s3_access_key=s3
+      - s3_access_key=admin
       - s3_secret_key_file=/run/secrets/s3_password
       - editor_sync_uri=ws://editor-sync:8001
       - editor_sync_password_file=/run/secrets/editor_sync_password
