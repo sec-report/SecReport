@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+downloadSelf(){
+    wget https://raw.githubusercontent.com/sec-report/SecReport/main/run.sh
+    chmod +x run.sh
+}
+
 downloadDockerCompose(){
      if [ ! -f "docker-compose.yml" ]; then
          wget https://raw.githubusercontent.com/sec-report/SecReport/main/docker-compose.yml
@@ -45,6 +50,7 @@ stop(){
 }
 
 update(){
+    downloadSelf
     if [ -f "docker-compose.yml" ]; then
          rm docker-compose.yml
          downloadDockerCompose
