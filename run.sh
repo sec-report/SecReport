@@ -21,6 +21,19 @@ createPassword(){
     fi
 }
 
+exec() {
+    if [ "$1" = "addUser" ]
+    then
+        docker compose exec sec-report /sec_report $1 $2 $3 $4 $5 $6 $7
+    elif [ "$1" = "changeUserPassword" ]
+    then
+        docker compose exec sec-report /sec_report $1 $2 $3 $4 $5
+    elif [ "$1" = "setBasisLogin" ]
+    then
+        docker compose exec sec-report /sec_report $1 $2 $3
+    fi
+}
+
 run(){
     downloadDockerCompose
     createPassword
@@ -46,6 +59,10 @@ then
 elif [ "$1" = "update" ]
 then
     update
+    exit
+elif [ "$1" = "exec" ]
+then
+    exec $2 $3 $4 $5 $6 $7 $8
     exit
 fi
 
