@@ -6,9 +6,7 @@ downloadSelf(){
 }
 
 downloadDockerCompose(){
-     if [ ! -f "docker-compose.yml" ]; then
-         wget https://raw.githubusercontent.com/sec-report/SecReport/main/docker-compose.yml
-     fi
+     wget https://raw.githubusercontent.com/sec-report/SecReport/main/docker-compose.yml
 }
 
 createPassword(){
