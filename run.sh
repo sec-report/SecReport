@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 downloadSelf(){
-    wget https://raw.githubusercontent.com/sec-report/SecReport/main/run.sh
+    wget https://raw.githubusercontent.com/sec-report/SecReport/main/run.sh -O run.sh
     chmod +x run.sh
 }
 
 downloadDockerCompose(){
-     wget https://raw.githubusercontent.com/sec-report/SecReport/main/docker-compose.yml
+     wget https://raw.githubusercontent.com/sec-report/SecReport/main/docker-compose.yml -O docker-compose.yml
 }
 
 createPassword(){
@@ -38,7 +38,6 @@ exec() {
 }
 
 run(){
-    downloadDockerCompose
     createPassword
     docker compose up -d
 }
@@ -49,10 +48,7 @@ stop(){
 
 update(){
     downloadSelf
-    if [ -f "docker-compose.yml" ]; then
-         rm docker-compose.yml
-         downloadDockerCompose
-    fi
+    downloadDockerCompose
     docker compose pull
 }
 
