@@ -24,13 +24,9 @@ mkdir SecReport && cd SecReport
 wget https://raw.githubusercontent.com/sec-report/SecReport/main/run.sh
 chmod +x run.sh
 ./run.sh
-
-# 停止
-./run.sh stop
-
-# 更新
-./run.sh update
 ```
+
+> [run.sh 命令介绍](https://github.com/sec-report/SecReport/tree/main?tab=readme-ov-file#%E5%85%B6%E4%BB%96%E4%BD%9C%E5%93%81)
 
 Docker全部运行后访问 [http://127.0.0.1/](http://127.0.0.1/) 初始化管理员账号
 
@@ -75,6 +71,28 @@ Docker全部运行后访问 [http://127.0.0.1/](http://127.0.0.1/) 初始化管�
 * ~~私有部署版本添加SSO登录模式~~
 * ~~渗透测试报告增加上传渗透测试授权书功能~~
 * 应急溯源处置报告，包括`access.log`等日志分析功能
+
+## run.sh 命令介绍
+
+```
+# 启动服务
+./run.sh
+
+# 停止服务
+./run.sh stop
+
+# 更新平台
+./run.sh update
+
+# 添加用户
+./build.sh exec addUser -username xxx -password xxx -role admin
+
+# 修改用户密码
+./build.sh exec changeUserPassword -username xxx -password xxx
+
+# 设置是否开启基础登录
+./build.sh exec setBasisLogin -enabled true
+```
 
 ## 其他作品
 
