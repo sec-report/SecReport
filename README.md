@@ -26,7 +26,7 @@ chmod +x run.sh
 ./run.sh
 ```
 
-> [run.sh 命令介绍](https://github.com/sec-report/SecReport/tree/main?tab=readme-ov-file#%E5%85%B6%E4%BB%96%E4%BD%9C%E5%93%81)
+> [run.sh 命令介绍](#runsh-命令介绍)
 
 Docker全部运行后访问 [http://127.0.0.1/](http://127.0.0.1/) 初始化管理员账号
 
